@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BUSQUEDA DE AI | v42.0 SOURCE_CODE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="cyber-style.css">
+</head>
+<body>
+
+    <svg id="neural-cables">
+        <path class="cable" d="M0,300 Q150,300 330,500" />
+        <path class="cable" d="M100%,300 Q80%,300 330,500" />
+        <circle cx="330" cy="500" r="2" fill="var(--p)" />
+    </svg>
+
+    <div id="auth-modal">
+        <h2>ACTUALIZAR CREDENCIALES</h2>
+        <input type="text" id="api-key-input" placeholder="INGRESE GEMINI_API_KEY..." autocomplete="off">
+        <div style="display: flex; gap: 10px;">
+            <button class="btn" onclick="saveKey()">GUARDAR</button>
+            <button class="btn" onclick="toggleAuth(false)" style="border-color: #555; color: #555;">CANCELAR</button>
+        </div>
+    </div>
+
+    <div id="os-container">
+        <div class="hud-side">
+            <div class="hud-header">INSTRUCTION_PTR</div>
+            <div id="inst-ptr" style="font-size: 0.6rem; color: var(--sys); line-height: 1.5; font-family: monospace; opacity: 0.7;">
+                EAX: 0x0045F1<br>EBX: 0x0021A4<br>ESP: 0xFF021C
+            </div>
+            
+            <div class="hud-header" style="margin-top: 40px;">KERNEL_VERSION</div>
+            <div style="font-size: 0.65rem; line-height: 2;">
+                OS: INFINITY_DRIVE<br>
+                BUILD: v42.0_SOURCE<br>
+                STATE: RAW_LOGIC<br>
+                KEY_STAT: <span id="key-stat">OK</span>
+            </div>
+        </div>
+
+        <div id="central-node">
+            <header style="height: 60px; padding: 0 30px; display:flex; align-items:center; justify-content: space-between; background: #000; border-bottom: 1px solid #111;">
+                <div style="font-family: 'Orbitron'; font-weight: 900; letter-spacing: 5px; color: var(--p);">SOURCE_CODE // v42.0</div>
+                <div id="clock">00:00:00</div>
+            </header>
+
+            <div id="terminal">
+                <div class="msg ai-msg">[SOURCE]: Se han bypassado todas las abstracciones. Estás operando en el corazón de la lógica pura. Transmisión directa lista.</div>
+            </div>
+
+            <button id="scroll-up" class="scroll-nav" onclick="scrollToTop()">SCROLL_UP ▲</button>
+            <button id="scroll-down" class="scroll-nav" onclick="scrollToBottom()">SCROLL_DOWN ▼</button>
+
+            <div id="dock">
+                <button class="btn" onclick="toggleAuth(true)" style="border-color: var(--p); color: var(--p); font-size: 0.6rem;">AUTH</button>
+                <button id="mic-btn" class="btn" onclick="toggleVoice()" style="border-color: var(--sys); color: var(--sys); width: 60px; padding: 12px 0; font-size: 1.2rem;">🎤</button>
+                <input type="text" id="user-input" placeholder="INYECTAR INSTRUCCIÓN..." autocomplete="off">
+                <button class="btn" onclick="send()">EJECUTAR</button>
+            </div>
+        </div>
+
+        <div class="hud-side">
+            <div class="hud-header">ENTROPY_CUBE</div>
+            <canvas id="cube-canvas"></canvas>
+            
+            <div class="hud-header" style="margin-top: 40px;">LOG_STREAM</div>
+            <div id="logs" style="font-size: 0.55rem; color: var(--p); opacity: 0.5; overflow-y: auto; height: 350px;"></div>
+        </div>
+    </div>
+
+    <script src="cyber-script.js"></script>
+</body>
+</html>
